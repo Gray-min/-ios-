@@ -1,0 +1,12 @@
+var DateFr={
+getDate:function(time){
+  return time.split(":")[0]+"时"
+},
+getHour:function(time){
+  return time.split(":")[0]
+}
+}
+module.exports={
+getDate:DateFr.getDate,
+getHour:DateFr.getHour
+}

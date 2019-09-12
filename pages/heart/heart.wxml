@@ -1,0 +1,5 @@
+<!--pages/heart/heart.wxml-->
+<view >
+<view class="heart"></view>
+
+</view>

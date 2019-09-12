@@ -1,0 +1,96 @@
+<wxs module="dateFr" src="../../filters/dateFr.wxs"></wxs>
+
+<view style="width:750rpx;height:100%;background-color:#fff;position: fixed;top:0;z-index:999;display:{{show?'block':'none'}}" >
+<mp-loading type="circle" tips="{{tips}}" show="{{show}}" animated="{{animated}}"></mp-loading>
+</view>
+ <scroll-view scroll-y="{{true}}" style="height:{{height}}" bindscroll="scroll">
+<view class="mycontainer {{mode}}-mycontainer">
+	<view class="top">
+<view class="top-city">{{weatherData.city}}</view>
+<view class="top-weather">{{weatherData.weather}}</view>
+<view class="top-temp">{{weatherData.temp}}</view>
+</view>
+<view class="today {{mode}}-today">
+	<view style="  display: flex;flex-direction:row;">
+	<view class="space-left">{{weatherData.week}}</view>
+	<view class="today-today">今天</view>
+	</view>
+<view class="space-right">{{weatherData.temphigh}}  {{weatherData.templow}}</view>
+</view>
+<scroll-view scroll-x="{{true}}"> 
+<view class="hourly">
+	<block wx:for="{{weatherData.hourly}}" wx:for-item="hour"  >
+		<view class="hour">
+			<block wx:if="{{hour.weather==''}}">
+				<view class="hour-time">  {{hour.time}}</view>
+			</block>
+			<block wx:else>
+				<view class="hour-time">  {{dateFr.getDate(hour.time)}}</view>
+			</block>
+			<view class="hour-img"><image  src="{{iconMode}}{{hour.img}}.png"/></view>
+			<view class="hour-temp">{{hour.temp}} </view>
+		</view>
+	</block>
+</view>
+	</scroll-view>
+<view class="afterDays {{mode}}-afterDays">
+<view ></view>
+<block wx:for="{{weatherData.daily}}" wx:if="{{index!==0}}" wx:for-item="day">
+	<view class="day">
+		<view class="space-left">{{day.week}}</view>
+		<view ><image style="width:50rpx;height:50rpx" src="{{iconMode}}{{day.day.img}}.png"/></view>
+		<view class="space-right">{{day.day.temphigh}}  {{day.night.templow}}</view>
+	</view>
+    <view >
+    </view>
+</block>
+</view>
+<view class="desc {{mode}}-desc">
+	今天：现在{{weatherData.weather}}。最高气温{{weatherData.temphigh}}。
+	今晚{{weatherData.daily[0].night.weather}},最低气温{{weatherData.daily[0].night.templow}}。
+</view>
+<view class="more-infor-container">
+<view class="more-infor {{mode}}-more-infor">
+	<view >日出</view>
+	<view >{{weatherData.daily[0].sunrise}}</view>
+</view>
+<view class="more-infor {{mode}}-more-infor">
+	<view >日落</view>
+	<view >{{weatherData.daily[0].sunset}}</view>
+</view>
+</view>
+<view class="more-infor-container">
+<view class="more-infor {{mode}}-more-infor">
+	<view >空气质量</view>
+	<view >{{weatherData.aqi.quality}}</view>
+</view>
+<view class="more-infor {{mode}}-more-infor">
+	<view >湿度</view>
+	<view >{{weatherData.humidity}}%</view>
+</view>
+</view>
+<view class="more-infor-container">
+<view class="more-infor {{mode}}-more-infor">
+	<view >风</view>
+	<view >{{weatherData.winddirect}}   {{weatherData.windspeed}}米/秒</view>
+</view>
+<view class="more-infor {{mode}}-more-infor">
+	<view >气压</view>
+	<view >{{weatherData.pressure}} 帕</view>
+</view>
+</view>
+<view class="more-infor-container">
+<view class="more-infor {{mode}}-more-infor">
+	<view >紫外线指数</view>
+	<view >{{weatherData.index[2].ivalue}}</view>
+</view>
+<view class="more-infor {{mode}}-more-infor">
+	<view >感冒指数</view>
+	<view >{{weatherData.index[3].ivalue}}</view>
+</view>
+</view>
+</view>
+</scroll-view>
+<view class="foot {{mode}}-foot">
+	
+</view>
