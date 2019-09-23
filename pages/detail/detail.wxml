@@ -1,0 +1,9 @@
+<!--pages/detail/detail.wxml-->
+<view >
+<image src='{{dsapi.picture}}' style="width:{{wxWidth}}" mode="aspectFit"></image>
+<view  class="content">
+<view >{{dsapi.content}}</view>
+<view >{{dsapi.note}}</view>
+</view>
+
+</view>

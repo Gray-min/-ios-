@@ -1,10 +1,11 @@
 {
   "pages": [
-    "pages/weather/weather",
     "pages/index/index",
+    "pages/detail/detail",
+    "pages/weather/weather",
+   
     "pages/logs/logs",
-    "pages/test/test"
-    
+    "pages/test/test" 
   ],
   "window": {
     "backgroundTextStyle": "light",
